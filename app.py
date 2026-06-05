@@ -473,36 +473,51 @@ if not st.session_state.is_debating:
 </div>
 """, unsafe_allow_html=True)
 
-    # Large input
-    topic_typed = st.text_input(
-        "topic",
-        value=st.session_state.selected_chip,
+    # Store topic in session state
+    if "debate_topic" not in st.session_state:
+        st.session_state.debate_topic = ""
+
+    # Show topic chips as the PRIMARY input
+    st.markdown("<div style='font-size: 14px; color: #aaa; margin-bottom: 8px;'>Choose a preset topic:</div>", unsafe_allow_html=True)
+    col1, col2, col3, col4, col5 = st.columns(5)
+    with col1:
+        if st.button("🏦 Crypto ban?", use_container_width=True):
+            st.session_state.debate_topic = "Should India ban cryptocurrency?"
+    with col2:
+        if st.button("🤖 AI Engineers?", use_container_width=True):
+            st.session_state.debate_topic = "Will AI replace software engineers?"
+    with col3:
+        if st.button("☢️ Nuclear Energy", use_container_width=True):
+            st.session_state.debate_topic = "Is nuclear energy India's future?"
+    with col4:
+        if st.button("🏠 Remote Work", use_container_width=True):
+            st.session_state.debate_topic = "Is remote work killing productivity?"
+    with col5:
+        if st.button("📱 Social Media", use_container_width=True):
+            st.session_state.debate_topic = "Did social media harm democracy?"
+
+    # Show what's selected
+    if st.session_state.debate_topic:
+        st.success(f"Selected: {st.session_state.debate_topic}")
+
+    # Custom topic input with DIFFERENT key
+    custom = st.text_input(
+        "Or type custom topic:",
+        key="custom_debate_input",
         placeholder="Ask any controversial question...",
-        label_visibility="collapsed",
-        key="homepage_input",
+        label_visibility="collapsed"
     )
+    if custom:
+        st.session_state.debate_topic = custom
 
-    # Send button (aligned right under input)
-    send_clicked = st.button("⚡ Start Debate", type="primary")
-
-    st.markdown("<div style='height:16px; clear: both;'></div>", unsafe_allow_html=True)
-
-    # Suggestion chips
-    chip_cols = st.columns(len(CHIPS))
-    for i, (icon, label) in enumerate(CHIPS):
-        with chip_cols[i]:
-            if st.button(f"{icon} {label}", key=f"chip_{i}", use_container_width=True):
-                st.session_state.selected_chip = label
-                st.rerun()
-
-    # Handle start
-    final_topic = topic_typed or st.session_state.selected_chip
-    if send_clicked:
-        if final_topic:
-            start_debate(final_topic)
+    # Start button
+    if st.button("⚡ Start Debate", type="primary"):
+        topic = st.session_state.debate_topic
+        if topic:
+            start_debate(topic)
             st.rerun()
         else:
-            st.warning("Please enter or select a topic first.")
+            st.warning("Please select or type a topic first!")
 
 # ─── DEBATE ARENA ─────────────────────────────────────────────────────────────
 if st.session_state.is_debating:
