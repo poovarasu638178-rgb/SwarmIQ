@@ -1,64 +1,46 @@
 # ⚡ SwarmIQ — AI Agent Debate Platform
-## Microsoft Build AI Hackathon 2026 | Agent Swarms
+### Microsoft Build AI Hackathon 2026 | Agent Swarms Track
 
-![Python](https://img.shields.io/badge/Python-3.12-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-red) ![OpenAI](https://img.shields.io/badge/OpenAI-gpt--4o--mini-green)
+## 🎯 What is SwarmIQ?
+SwarmIQ is the world's first AI agent debate platform where 
+7 specialized AI agents collaborate to debate any controversial 
+topic and deliver an evidence-based verdict.
 
-### What makes it unique
-SwarmIQ is the world's first AI Agent Debate Platform. Unlike standard LLMs that provide a single, biased answer, SwarmIQ uses an orchestrated swarm of **7 specialized agents** to argue, challenge, and debate any topic like a panel of world-class experts, delivering a final verdict backed by real evidence.
+## 🔗 Links
+- Live App: https://swarmiq.streamlit.app
+- Demo Video: https://youtu.be/cXhM21feCZI
+- GitHub: https://github.com/poovarasu638178-rgb/SwarmIQ
 
-### 🤖 The 7 Agent Swarm
-- 🎙️ **Moderator:** Sets the rules and keeps the debate on track.
-- 🟢 **Advocate (PRO):** Argues passionately FOR the topic with evidence.
-- 🔴 **Opposition (CON):** Argues strongly AGAINST the topic, exposing weaknesses.
-- 😈 **Devil's Advocate:** Challenges both sides with unpredictable, brilliant logic.
-- 🔬 **Fact Checker:** Verifies claims using live web search (DuckDuckGo).
-- 📊 **Analyst:** Provides data, trends, and historical context.
-- ⚖️ **Judge:** Reviews the debate, scores both sides, and gives the Final Verdict.
+## 🤖 The 7 Agents
+| Agent | Role | Responsibility |
+|-------|------|----------------|
+| 🎙️ Moderator | NEUTRAL | Sets rules, manages debate flow |
+| 🟢 Advocate | PRO | Argues FOR with evidence |
+| 🔴 Opposition | CON | Argues AGAINST with evidence |
+| 😈 Devil's Advocate | CHALLENGER | Challenges both sides |
+| 🔬 Fact Checker | VERIFIER | Rates claims TRUE/FALSE/MIXED |
+| 📊 Analyst | DATA | Provides statistics & trends |
+| ⚖️ Judge | VERDICT | Scores & declares winner |
 
-### 🏛️ Architecture
+## 🏗️ Architecture
+User Input → SwarmIQ Orchestrator → 7 Agent Swarm → Results
 
-```text
-User Topic → 🎙️ Moderator
-                 ↓
-           🟢 Advocate (Web Search) ↔️ 🔴 Opposition (Web Search)
-                 ↓
-           😈 Devil's Advocate
-                 ↓
-           🔬 Fact Checker (Web Search)
-                 ↓
-           📊 Analyst (Web Search)
-                 ↓
-           ⚖️ Judge (Scores & Final Verdict) → 📄 PDF Report Generation
-```
+## ⚙️ Setup Instructions
+1. Clone the repo: git clone https://github.com/poovarasu638178-rgb/SwarmIQ
+2. Install dependencies: pip install -r requirements.txt
+3. Create .env file: GITHUB_TOKEN=your_token_here
+4. Run: streamlit run app.py
 
-### 🚀 Setup in 3 Steps
-1. Clone the repository and install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Set up your `.env` file with your GitHub token for Azure inference:
-   ```bash
-   cp .env.example .env
-   # Add your GITHUB_TOKEN inside
-   ```
-3. Run the application:
-   ```bash
-   streamlit run app.py
-   ```
+## 🛠️ Tech Stack
+- Python 3.11
+- Streamlit
+- GitHub Models API (Microsoft Azure)
+- GPT-4o-mini
+- DuckDuckGo Search
+- ReportLab
 
-### 💡 Example Debate Topics
-- 🏦 "Should India ban cryptocurrency?"
-- 🤖 "Will AI replace software engineers by 2030?"
-- ☢️ "Is nuclear energy the future of clean power?"
-- 🏠 "Is remote work better than office work?"
-- 💉 "Should startups raise VC or bootstrap?"
-
-### 🏆 Why SwarmIQ wins
-- **Live Typing Animation:** Watch the agents debate in real-time.
-- **Color-Coded UI:** Easy to follow PRO (green) and CON (red) arguments.
-- **Real-World Evidence:** Fact-checking and analytics backed by live web searches.
-- **Beautiful Export:** Professional PDF report generation for every debate.
-- **Fault Tolerant:** Built-in fallbacks if search fails.
-- **Enterprise UI:** Stunning dark-mode interface built for scale.
-
-*Powered by SwarmIQ | Microsoft Build AI 2026*
+## 👤 Team
+- Name: Poovarasu S
+- Role: Solo Developer
+- College: KIOT, Salem
+- Track: Agent Swarms
