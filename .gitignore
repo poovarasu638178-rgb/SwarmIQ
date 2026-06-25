@@ -1,5 +1,31 @@
+# Environment variables — NEVER commit these
 .env
+.env.local
+.env.*.local
+
+# Next.js build output
+.next/
+out/
+
+# Node modules
+node_modules/
+
+# Python legacy (old Streamlit)
 venv/
 __pycache__/
 *.pyc
+
+# OS files
 .DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
